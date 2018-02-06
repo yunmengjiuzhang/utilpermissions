@@ -39,21 +39,30 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
                 // 版本判断。当手机系统大于 23 时，才有必要去判断权限是否获取
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermission(Permission.READ_CALENDAR,
-                            Permission.CAMERA,
-                            Permission.READ_CONTACTS,
-                            Permission.ACCESS_COARSE_LOCATION,
-                            Permission.RECORD_AUDIO,
-                            Permission.READ_PHONE_STATE,
-                            Permission.BODY_SENSORS,
-                            Permission.READ_EXTERNAL_STORAGE);
+//                    requestPermission(Permission.READ_CALENDAR,
+//                            Permission.CAMERA,
+//                            Permission.READ_CONTACTS,
+//                            Permission.ACCESS_COARSE_LOCATION,
+//                            Permission.RECORD_AUDIO,
+//                            Permission.READ_PHONE_STATE,
+//                            Permission.BODY_SENSORS,
+//                            Permission.READ_EXTERNAL_STORAGE);
+                    requestPermission(Permission.Group.CONTACTS,
+                            Permission.Group.PHONE,
+                            Permission.Group.CALENDAR,
+                            Permission.Group.CAMERA,
+                            Permission.Group.LOCATION,
+                            Permission.Group.STORAGE,
+//                            Permission.Group.MICROPHONE,
+//                            Permission.Group.SMS,
+                            Permission.Group.SENSORS);
 
                 }
                 break;
         }
     }
 
-    private void requestPermission(String... permissions) {
+    private void requestPermission(String[]... permissions) {
         AndPermission.with(this)
                 .permission(permissions)
                 .rationale(mRationale)
